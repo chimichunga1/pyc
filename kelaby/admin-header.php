@@ -2,7 +2,7 @@
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="index_admin.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>PYC</span>
       <!-- logo for regular state and mobile devices -->
@@ -25,7 +25,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Xander Ford</span>
+              <span class="hidden-xs"><?php  echo $_SESSION['fn']; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -33,7 +33,7 @@
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Xander Ford - Jejemon 
+                 <?php  echo $_SESSION['fn']; ?>
                   <small>2017</small>
                 </p>
               </li>

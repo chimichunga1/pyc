@@ -22,6 +22,8 @@
         <link href="layout/styles/simple-sidebar.css" rel="stylesheet">
 
 </head>
+
+<?php session_start();?>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 

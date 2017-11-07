@@ -8,6 +8,8 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <?php include("admin-head-links.php"); ?>
 </head>
+
+<?php session_start();?>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 

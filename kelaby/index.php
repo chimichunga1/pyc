@@ -1,11 +1,5 @@
 <!DOCTYPE html>
-<!--
-Template Name: Kelaby
-Author: <a href="http://www.os-templates.com/">OS Templates</a>
-Author URI: http://www.os-templates.com/
-Licence: Free to use under our free template licence terms
-Licence URI: http://www.os-templates.com/template-terms
--->
+
 <html>
 <head>
 <title>Home | PYC</title>
@@ -16,9 +10,7 @@ Licence URI: http://www.os-templates.com/template-terms
 </head>
 <body id="top">
 <?php include("header.php"); ?>
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
+
 <div class="bgded overlay" style="background-image:url('images/banner.jpg');">
   <div id="pageintro" class="hoc clear"> 
     <!-- ################################################################################################ -->

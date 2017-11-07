@@ -21,7 +21,46 @@
     <link href="layout/styles/style.css" rel="stylesheet">
         <link href="layout/styles/simple-sidebar.css" rel="stylesheet">
 
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".show-text").click(function(){
+      $('#myModal').find(".lots-of-text").toggle();
+        $('#myModal').modal('handleUpdate');
+    });
+});
+</script>
+        <style type="text/css">
+
+#panel {
+  
+    display: none;
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+button 
+{
+  text-decoration: none !important;
+}
+label
+{
+  font-size:1em;
+  margin-left: 20px;
+}
+img 
+{
+  width: 60px;
+  height: 60px;
+}
+</style>
+
+
+
+
+
 </head>
+
+<?php session_start();?>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
@@ -33,7 +72,45 @@
 <br><br>
 <div class="wrapper" style="background-color: transparent;">
 
-<button class="btn btn-success">Add News</button>
+<div class="wrapper" style="margin:10px; width:98%">
+<button id="addbtn" type='button'  style="width:99%;" class="btn btn-success">Add News +</button>
+
+
+
+<div id="panel">
+
+ 
+  <form  role="form" action="sub_news.php" method="post"  enctype="multipart/form-data">
+    <div class="form-group">
+      <label >  News:</label>
+      <input type="text" class="form-control btn btn-success" name="newsname" required>
+    </div>
+      <div class="form-group">
+      <label >  News Date:</label>
+      <input type="date" class="form-control btn btn-success"  name="newsdate" required>
+    </div>
+    <div class="form-group">
+      <label >  News Content:</label>
+      <textarea style="resize:none;" class="form-control btn btn-success" rows='7' name="newscon"  required></textarea>
+    </div>
+  <div class="form-group">
+      <label >  News Image:</label>
+      <input type="file" name="newsimg" accept="image/*" class="form-control btn btn-success"  style="height:40px;" required >
+    </div> 
+   
+  
+
+ <input type="submit" style="float:right" name="submit" id="submit" class="btn btn-success" value="Submit" />  
+
+  </form>
+
+
+
+
+<!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+  </div>
+</div>
+
 
 </div>
 <br><br>
@@ -62,33 +139,133 @@
 
     <!--Table body-->
     <tbody>
+    <?php 
+    include ('config.connect.php');
+    $fetch=mysqli_query($c1,'SELECT * From news_tbl'); 
+    while($row=mysqli_fetch_assoc($fetch))
+    {
+
+  ?>
         <tr>
-            <th scope="row">1</th>
-            <td style="color: black;">00/00/00</td>
-            <td style="color: black;">Mark</td>
-            <td style="color: black;">Title1</td>
-            <td style="color: black;">Announcement1</td>
-             <td style="color: black;">Image1</td>     
-              <td style="color: black; "><button class="btn btn-primary"><a class="fa fa-edit" style="color:white;"></a> </button> <button class="btn btn-danger"><a class="fa fa-close" style="color:white;"></a> </button> </td>    
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td style="color: black;">00/00/00</td>
-  <td style="color: black;">Mark</td>
-            <td style="color: black;">Title2</td>
-            <td style="color: black;">Announcement1</td>
-             <td style="color: black;">Image1</td> 
-              <td style="color: black; "><button class="btn btn-primary"><a class="fa fa-edit" style="color:white;"></a> </button> <button class="btn btn-danger"><a class="fa fa-close" style="color:white;"></a> </button> </td>           
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td style="color: black;">00/00/00</td>
-            <td style="color: black;">Mark</td>
-            <td style="color: black;">Title3</td>
-            <td style="color: black;">Announcement1</td>
-               <td style="color: black;">Image1</td>  
-              <td style="color: black; "><button class="btn btn-primary"><a class="fa fa-edit" style="color:white;"></a> </button> <button class="btn btn-danger"><a class="fa fa-close" style="color:white;"></a> </button> </td>    
-        </tr>
+            <th scope="row" style="vertical-align: middle;"><?php echo $row['news_ID']; ?></th>
+            <th style="color: black;background-color: white; vertical-align: middle;"><?php echo $row['newsdate']; ?></th>
+            <th style="color: black;background-color: white;vertical-align: middle;"><?php echo $row['newsposted']; ?></th>
+            <th style="color: black;background-color: white;vertical-align: middle;"><?php echo $row['news']; ?></th>
+            <th style="color: black;background-color: white;vertical-align: middle;"><?php echo $row['newscon']; ?></th>
+             <th style="color: black;background-color: white;vertical-align: middle;"><center><?php echo "<img src='".$row['newspic']."'>" ;?></center></th> <?php    
+      echo "<th style='color: black;background-color: white;vertical-align: middle;' >";
+  
+  $Mymodal="Mymodal".$row['news_ID'];
+$Yourmodal="Yourmodal".$row['news_ID'];
+    echo '<center>
+
+
+
+     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#'.$Mymodal.'" ><i class="glyphicon glyphicon-edit"></i></button>
+     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#'.$Yourmodal.'"><i class="glyphicon glyphicon-remove"></i></button></center>';
+
+
+
+
+  echo "</td>";
+
+
+
+   
+echo
+"
+    
+    <!-- Modal HTML -->
+    <div id='".$Mymodal."' class='modal fade'>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                    <h4 class='modal-title'>EDIT FORM </h4>
+                </div>
+                <div class='modal-body'>
+                 
+ <form  role='form' action='edit_news.php' method='post' enctype='multipart/form-data'>
+    <div class='form-group'>
+      <input type='text' class='form-control' name='editnews_ID'   style='opacity:0;position:absolute;' value='".$row['news_ID']."'>
+      <label >News:</label>
+      <input type='text' class='form-control'  name='editnews' placeholder='".$row['news']."' >
+    </div>
+
+  <div class='form-group'>
+      <label >News Date:</label>
+      <input type='date' class='form-control'  name='editnewsdate' placeholder='".$row['newsdate']."' >
+    </div>
+
+     <div class='form-group'>
+      <label >Brand Description:</label>
+      <textarea style='resize:none;' class='form-control' rows='7' name='editnewscon'  placeholder='".$row['newscon']."' ></textarea>
+    </div>
+
+  <div class='form-group'>
+      <label >Brand Picture:</label>
+      <input type='file' name='editnewsimg' accept='image/*' class='form-control'    >
+    </div> 
+    
+
+
+ 
+
+
+
+                </div>
+                <div class='modal-footer'>
+                    <button type='submit' name='submit' class='btn btn-success'>Save</button>
+                    <button type='button' class='btn btn-danger' data-dismiss='modal'>Close</button>
+  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+";
+
+
+//==========================================================================
+echo
+"
+    
+    <!-- Modal HTML -->
+    <div id='".$Yourmodal."' class='modal fade'>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                    <h4 class='modal-title'>EDIT FORM </h4>
+                </div>
+                <div class='modal-body'>
+                 
+ <form  role='form' action='del_news.php' method='post' >
+    <div class='form-group'>
+      <input type='text' class='form-control'  name='delID'  style='opacity:0;' value='".$row['news_ID']."'>
+      <label ><center>Are you sure you want to delete '".$row['news']."' ?</center></label>
+      
+    </div>
+                </div>
+                <div class='modal-footer'>
+                    <button type='submit' name='submit'  class='btn btn-success'>Yes</button>
+                    <button type='button' class='btn btn-danger' data-dismiss='modal'>No</button>
+  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+";
+  
+  echo "</tr>";
+
+
+
+
+  ?>
+      <?php
+       }
+
+    ?>
     </tbody>
     <!--Table body-->
 </table>
@@ -113,5 +290,15 @@
 <!-- ./wrapper -->
 
 <?php include("admin-scripts.php"); ?>
+<script>
+$(document).ready(function(){
+
+    $("#addbtn").click(function(){
+        $("#panel").slideToggle("slow");
+    });
+
+
+});
+</script>
 </body>
 </html>
