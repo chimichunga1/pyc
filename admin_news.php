@@ -1,9 +1,10 @@
+<?php  include ('connect.php');?>
 <!DOCTYPE html>
 <html>
 <head>  
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Admin | PYC</title>
+  <title>Admin | OLHRP</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <?php include("admin-head-links.php"); ?>
@@ -60,7 +61,7 @@ img
 
 </head>
 
-<?php session_start();?>
+
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
@@ -140,7 +141,7 @@ img
     <!--Table body-->
     <tbody>
     <?php 
-    include ('config.connect.php');
+   
     $fetch=mysqli_query($c1,'SELECT * From news_tbl'); 
     while($row=mysqli_fetch_assoc($fetch))
     {
@@ -187,7 +188,7 @@ echo
                  
  <form  role='form' action='edit_news.php' method='post' enctype='multipart/form-data'>
     <div class='form-group'>
-      <input type='text' class='form-control' name='editnews_ID'   style='opacity:0;position:absolute;' value='".$row['news_ID']."'>
+      <input type='text' class='form-control' name='editnews_ID'   style='opacity:0;display:none;position:absolute;' value='".$row['news_ID']."'>
       <label >News:</label>
       <input type='text' class='form-control'  name='editnews' placeholder='".$row['news']."' >
     </div>
@@ -198,12 +199,12 @@ echo
     </div>
 
      <div class='form-group'>
-      <label >Brand Description:</label>
-      <textarea style='resize:none;' class='form-control' rows='7' name='editnewscon'  placeholder='".$row['newscon']."' ></textarea>
+      <label >News Content:</label>
+      <textarea style='resize:none;' class='form-control' rows='7' name='editnewscon'  placeholder='".($row['newscon'])."' ></textarea>
     </div>
 
   <div class='form-group'>
-      <label >Brand Picture:</label>
+      <label >News Picture:</label>
       <input type='file' name='editnewsimg' accept='image/*' class='form-control'    >
     </div> 
     
@@ -235,13 +236,13 @@ echo
             <div class='modal-content'>
                 <div class='modal-header'>
                     <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-                    <h4 class='modal-title'>EDIT FORM </h4>
+                    <h4 class='modal-title'>DELETE FORM </h4>
                 </div>
                 <div class='modal-body'>
                  
  <form  role='form' action='del_news.php' method='post' >
     <div class='form-group'>
-      <input type='text' class='form-control'  name='delID'  style='opacity:0;' value='".$row['news_ID']."'>
+      <input type='text' class='form-control'  name='delID'  style='opacity:0;display:none;' value='".$row['news_ID']."'>
       <label ><center>Are you sure you want to delete '".$row['news']."' ?</center></label>
       
     </div>

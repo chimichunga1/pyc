@@ -2,8 +2,7 @@
 
  <?php  
  //insert.php  
- session_start();
-require_once('config.connect.php');
+require_once('connect.php');
 
 $newsposted=$_SESSION['fn'];
 $news=$_POST["newsname"];

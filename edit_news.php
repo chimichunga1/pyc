@@ -1,8 +1,8 @@
 
  <?php  
  //insert.php  
-require_once('config.connect.php');
-session_start();
+require_once('connect.php');
+
 
 $newsposted=$_SESSION['fn'];
 $news_ID=$_POST["editnews_ID"];

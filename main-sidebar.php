@@ -20,7 +20,7 @@
       <ul class="sidebar-menu" data-widget="tree">
       <br>
         <li class="header">Admin Dashboard</li>
-        <li><a href="admin_about.php"><i class="fa fa-pencil-square-o"></i> <span>About PYC</span></a></li>
+        <li><a href="admin_about.php"><i class="fa fa-pencil-square-o"></i> <span>About OLHRP</span></a></li>
         <li><a href="admin_announcements.php"><i class="fa fa-info-circle"></i> <span>Announcements</span></a></li>
         <li><a href="admin_news.php"><i class="fa fa-newspaper-o"></i> <span>News</span></a></li>
         <li><a href="admin_prayers.php"><i class="fa fa-smile-o"></i> <span>Prayers</span></a></li>

@@ -1,6 +1,6 @@
    <?php  
  //insert.php  
-require_once('config.connect.php');
+require_once('connect.php');
 
 
 $delID=$_POST["delID"];

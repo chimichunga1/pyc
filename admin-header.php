@@ -4,9 +4,9 @@
     <!-- Logo -->
     <a href="index_admin.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>PYC</span>
+      <span class="logo-mini" style="font-size: 18px;font-family: Agency FB;">OLHRP</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg" style="font-size: 18px;">Parish Youth Council</span>
+      <span class="logo-lg" style="font-size: 18px;font-family: Agency FB;">Our Lady of the Holy Rosary Parish</span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -34,7 +34,7 @@
 
                 <p>
                  <?php  echo $_SESSION['fn']; ?>
-                  <small>2017</small>
+                  <small>2018</small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -49,9 +49,7 @@
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
+       
         </ul>
       </div>
 

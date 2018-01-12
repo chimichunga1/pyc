@@ -1,4 +1,6 @@
 <?php 
+session_start();
+
 $h1='localhost';
 $u1='root';
 $p1='ondevilla';
