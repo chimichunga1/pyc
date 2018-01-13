@@ -189,6 +189,7 @@ $search= mysqli_fetch_assoc($row);
 
 
   $_SESSION['fn']=$search['fullname'];
+  $_SESSION["u_id"] = $search["u_id"];
 
 ?>
 

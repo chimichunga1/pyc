@@ -73,7 +73,55 @@ img
 <br><br>
 <div class="wrapper" style="background-color: transparent;">
 
-<center><b><a style="color:black; font-size:24px;">RESERVATIONS</a></b></center>
+<div class="wrapper" style="margin:10px; width:98%">
+<button id="addbtn" type='button'  style="width:99%;" class="btn btn-success">Add Accounts +</button>
+
+
+
+<div id="panel">
+
+ 
+  <form  role="form" action="sub_accounts.php" method="post"  enctype="multipart/form-data">
+    <div class="form-group">
+      <label >  Username:</label>
+      <input type="text" class="form-control btn btn-success" name="username" required>
+    </div>
+    <div class="form-group">
+      <label >  Password:</label>
+      <input type="text" class="form-control btn btn-success"  name="password" required>
+    </div>
+    <div class="form-group">
+      <label >  Full Name:</label>
+      <input type="text" class="form-control btn btn-success"  name="fullname" required>
+    </div>
+     <div class="form-group">
+      <label >  E-mail:</label>
+      <input type="text" class="form-control btn btn-success"  name="email" required>
+    </div>
+      <div class="form-group">
+      <label >  Phone:</label>
+      <input type="text" class="form-control btn btn-success"  name="phone" required>
+    </div>
+
+      <div class="form-group">
+      <label >  Access Right</label>
+      <input type="number" class="form-control btn btn-success"  name="accessright" min="1" max="2" required>
+    </div>
+
+  
+
+ <input type="submit" style="float:right" name="submit_add" id="submit" class="btn btn-success" value="Submit" />  
+
+  </form>
+
+
+
+
+<!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+  </div>
+</div>
+
+
 </div>
 <br><br>
 <div class="wrapper" style="background-color: white;">
@@ -88,11 +136,13 @@ img
     <!--Table head-->
     <thead class="blue-grey lighten-4">
         <tr>
-            <th>Reservation ID</th>
-            <th>Reservee</th>
-            <th>Venue</th>
-            <th>Reservation Date</th>
-            <th>Time</th>
+            <th>User ID</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Fullname</th>
+            <th>E-mail</th>
+            <th>Phone</th>
+            <th>Access Right</th>
             <th>Remarks</th>
   
         </tr>
@@ -103,18 +153,19 @@ img
     <tbody>
     <?php 
    
-    $fetch=mysqli_query($c1,'SELECT * From reserve_tbl'); 
+    $fetch=mysqli_query($c1,'SELECT * From account_tbl WHERE isDeleted=0 '); 
     while($row=mysqli_fetch_assoc($fetch))
     {
 
   ?>
         <tr>
-            <th scope="row" style="vertical-align: middle;"><?php echo $row['r_id']; ?></th>
-            <th style="color: black;background-color: white;vertical-align: middle;"><?php echo $row['r_name']; ?></th>
-            <th style="color: black;background-color: white;vertical-align: middle;"><?php echo $row['v_id']; ?></th>
-            <th style="color: black;background-color: white;vertical-align: middle;"><?php echo $row['r_date']; ?></th>
-            <th style="color: black;background-color: white;vertical-align: middle;"><?php echo $row['t_id']; ?></th>
-
+            <th scope="row" style="vertical-align: middle;"><?php echo $row['u_id']; ?></th>
+            <th style="color: black;background-color: white;vertical-align: middle;"><?php echo $row['username']; ?></th>
+            <th style="color: black;background-color: white;vertical-align: middle;"><?php echo $row['password']; ?></th>
+            <th style="color: black;background-color: white;vertical-align: middle;"><?php echo $row['fullname']; ?></th>
+            <th style="color: black;background-color: white;vertical-align: middle;"><?php echo $row['email']; ?></th>
+            <th style="color: black;background-color: white;vertical-align: middle;"><?php echo $row['phone']; ?></th>
+            <th style="color: black;background-color: white;vertical-align: middle;"><?php echo $row['access']; ?></th>
 
             <?php    
       echo "<th style='color: black;background-color: white;vertical-align: middle;' >";
@@ -135,71 +186,8 @@ $Yourmodal="Yourmodal".$row['u_id'];
 
 
 
-echo
-"
-    
-    <!-- Modal HTML -->
-    <div id='".$Mymodal."' class='modal fade'>
-        <div class='modal-dialog'>
-            <div class='modal-content'>
-                <div class='modal-header'>
-                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-                    <h4 class='modal-title'>EDIT FORM </h4>
-                </div>
-                <div class='modal-body'>
-        
-
-
- <form  role='form' action='edit_reservation.php' method='post' enctype='multipart/form-data'>
-    <div class='form-group'>
-      <input type='text' class='form-control' name='editr_id'   style='opacity:0;z-index:-9999;position:absolute;' value='".$row['r_id']."'>
-      <label >Reservation Name:</label>
-      <input type='text' class='form-control'  name='editreservation' placeholder='".$row['r_name']."' >
-    </div>
-";
-
-
-
-echo "
-  <div class='form-group'>
-      <label >Date:</label>
-      <input type='date' class='form-control'  name='editr_date' placeholder='".$row['r_date']."' >
-    </div>
-
-      <div class='form-group'>
-  <label class='containerbtn'> SLOT 1 | 08:00 AM - 11:00 AM
-  <input type='radio' name='t_id'  checked value='1' required>
-  <span class='checkmark'></span>
-</label>
-<label class='containerbtn'>SLOT 2 | 12:00 PM - 03:00 PM
-  <input type='radio' name='t_id' value='2' >
-  <span class='checkmark'></span>
-</label>
-<label class='containerbtn'>SLOT 3 | 04:00 PM - 07:00 PM
-  <input type='radio' name='t_id' value='3' >
-  <span class='checkmark'></span>
-</label>
-
-    </div>
-
-
-
-
- 
-
-
-
-                </div>
-                <div class='modal-footer'>
-                    <button type='submit' name='submit_edit' class='btn btn-success'>Save</button>
-                    <button type='button' class='btn btn-danger' data-dismiss='modal'>Close</button>
-  </form>
-                </div>
-            </div>
-        </div>
-    </div>
-";
 //==========================================================================
+
   echo
 "
     
@@ -213,10 +201,10 @@ echo "
                 </div>
                 <div class='modal-body'>
                  
- <form  role='form' action='del_reservation.php' method='post' >
+ <form  role='form' action='del_accounts.php' method='post' >
     <div class='form-group'>
-      <input type='text' class='form-control'  name='delID'  style='opacity:0;display:none;' value='".$row['r_id']."'>
-      <label ><center>Are you sure you want to delete '".$row['r_name']."' ?</center></label>
+      <input type='text' class='form-control'  name='delID'  style='opacity:0;display:none;' value='".$row['u_id']."'>
+      <label ><center>Are you sure you want to delete '".$row['username']."' ?</center></label>
       
     </div>
                 </div>
