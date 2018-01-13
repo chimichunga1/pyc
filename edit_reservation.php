@@ -61,7 +61,7 @@ else
 
 echo "This Date is already reserved!";
 
-
+	
  echo"<script>window.location.href='admin_reservation.php';</script>";	
 }
 
