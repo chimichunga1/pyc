@@ -515,28 +515,63 @@ $search= mysqli_fetch_assoc($row);
 <br>
 <br>
 <br>
+<?php $qprayer=mysqli_query($c1,"SELECT * FROM prayer_tbl");
+	 while ($row=mysqli_fetch_array($qprayer)) {
+
+$modalprayerid="prayer".$row[0];
+	 
+?>
+
+
+
+
 			<div class="wow fadeInUp col-md-4 col-sm-6 col-xs-6" data-wow-delay="0.3s">
-				<br><DIV style="padding:20px;border:3px solid #46b8da;"><SPAN style="font-size:2em;color:#46b8da;"><b>ONE</b></SPAN></DIV><br>
-			</div>
-		<div class="wow fadeInUp col-md-4 col-sm-6 col-xs-6" data-wow-delay="0.3s">
-				<br><DIV style="padding:20px;border:3px solid #46b8da;"><SPAN style="font-size:2em;color:#46b8da;"><b>ONE</b></SPAN></DIV><br>
-			</div>
-			<div class="wow fadeInUp col-md-4 col-sm-6 col-xs-6" data-wow-delay="0.3s">
-				<br><DIV style="padding:20px;border:3px solid #46b8da;"><SPAN style="font-size:2em;color:#46b8da;"><b>ONE</b></SPAN></DIV><br>
-			</div>
-			<div class="wow fadeInUp col-md-4 col-sm-6 col-xs-6" data-wow-delay="0.3s">
-				<br><DIV style="padding:20px;border:3px solid #46b8da;"><SPAN style="font-size:2em;color:#46b8da;"><b>ONE</b></SPAN></DIV><br>
-			</div>
-			<div class="wow fadeInUp col-md-4 col-sm-6 col-xs-6" data-wow-delay="0.3s">
-				<br><DIV style="padding:20px;border:3px solid #46b8da;"><SPAN style="font-size:2em;color:#46b8da;"><b>ONE</b></SPAN></DIV><br>
-			</div>
-			<div class="wow fadeInUp col-md-4 col-sm-6 col-xs-6" data-wow-delay="0.3s">
-				<br><DIV style="padding:20px;border:3px solid #46b8da;"><SPAN style="font-size:2em;color:#46b8da;"><b>ONE</b></SPAN></DIV><br>
-			</div>
-			<div class="wow fadeInUp col-md-4 col-sm-6 col-xs-6" data-wow-delay="0.3s">
-				<br><DIV style="padding:20px;border:3px solid #46b8da;"><SPAN style="font-size:2em;color:#46b8da;"><b>ONE</b></SPAN></DIV><br>
+				<br>
+				<?php echo '<DIV data-toggle="modal" data-target="#'.$modalprayerid.'" style="padding:20px;border:3px solid #46b8da;"><SPAN style="font-size:2em;color:#46b8da;"><b>'.$row[1].' </b></SPAN></DIV>
+				';?>
+
+				<br>
 			</div>
 
+
+
+
+	
+
+<?php	
+echo "
+<!-- Modal HTML -->
+    <div id='".$modalprayerid."' class='modal fade'>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                    <h4 class='modal-title'>PRAYERS </h4>
+                </div>
+                <div class='modal-body'>
+                 
+
+
+<h1>".$row[1]."</h1>
+<p>".$row[2]."</p>
+
+
+                </div>
+                <div class='modal-footer'>
+                   
+                    <button type='button' class='btn btn-danger' data-dismiss='modal'>Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+";
+
+
+
+
+ }
+?>
 
 			
 <br>
@@ -732,39 +767,26 @@ $search= mysqli_fetch_assoc($row);
 	<div class="container">
 		<div class="row">
 
-
+<?php $qmvc=mysqli_query($c1,"SELECT * FROM about_tbl WHERE abt_id='1'");
+$rowmvc=mysqli_fetch_array($qmvc);
+?>
 
 			<div class="wow fadeInLeft col-md-4 col-sm-4" data-wow-delay="0.3s">
 				<i class="fa fa-group"></i>
 				<h3>MISSION</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<p><?php echo $rowmvc[1];?></p>
 			</div>
 
 			<div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.6s">
 				<i class="fa fa-eye"></i>
 				<h3>VISION</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
+				<p><?php echo $rowmvc[2];?></p>
 			</div>
 
 			<div class="wow fadeInRight col-md-4 col-sm-4" data-wow-delay="0.9s">
 				<i class="fa fa-heart"></i>
 				<h3>CORE VALUES</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p><?php echo $rowmvc[3];?></p>
 			</div>
 
 
@@ -784,14 +806,14 @@ $search= mysqli_fetch_assoc($row);
 			<div class="col-md-12 col-sm-12">
 				<p class="wow fadeInUp" data-wow-delay="0.6s">Copyright &copy; 2018 Our Lady of the Holy Rosary Parish</p>
 
-			<!-- 	<ul class="social-icon">
+				<ul class="social-icon">
 					<li><a href="#" class="fa fa-facebook wow fadeInUp" data-wow-delay="1s"></a></li>
 					<li><a href="#" class="fa fa-twitter wow fadeInUp" data-wow-delay="1.3s"></a></li>
 					<li><a href="#" class="fa fa-dribbble wow fadeInUp" data-wow-delay="1.6s"></a></li>
 					<li><a href="#" class="fa fa-behance wow fadeInUp" data-wow-delay="1.9s"></a></li>
 					<li><a href="#" class="fa fa-google-plus wow fadeInUp" data-wow-delay="2s"></a></li>
 				</ul>
- -->
+
 			</div>
 			
 		</div>
