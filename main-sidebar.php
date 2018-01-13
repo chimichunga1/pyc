@@ -25,6 +25,7 @@
         <li><a href="admin_news.php"><i class="fa fa-newspaper-o"></i> <span>News</span></a></li>
         <li><a href="admin_prayers.php"><i class="fa fa-smile-o"></i> <span>Prayers</span></a></li>
          <li><a href="admin_sreflect.php"><i class="fa fa-adjust"></i> <span>Sunday Reflection</span></a></li>
+          <li><a href="admin_reservation.php"><i class="fa fa-location-arrow"></i> <span>Reservation</span></a></li>
         <li><a href="admin_accounts.php"><i class="fa fa-users"></i> <span>Accounts</span></a></li>
 
  <!-- 

@@ -15,6 +15,14 @@
   <?php include("main-sidebar.php"); ?>
 
 <div class="content-wrapper">
+
+
+
+
+
+
+
+
 </div>
 <?php include("admin-footer.php"); ?>
 
@@ -27,5 +35,7 @@
 <!-- ./wrapper -->
 
 <?php include("admin-scripts.php"); ?>
+
+
 </body>
 </html>
