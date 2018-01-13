@@ -41,23 +41,28 @@ echo "-----";
 echo $time;
 
 
-	
-    $table2c = "UPDATE reserve_tbl SET r_name = '$r_name' AND r_date = '$edit_date' AND t_id = '$time' WHERE r_id = '$editr_id'";
+	$table2a = "UPDATE reserve_tbl SET r_date = '$edit_date' WHERE r_id = '1'";
+   $run_query2d = mysqli_query($c1,$table2a);
+
+    $table2b = "UPDATE reserve_tbl SET r_name = '$r_name' WHERE r_id = '$editr_id'";
+    $run_query2d = mysqli_query($c1,$table2b);   
+
+    $table2c = "UPDATE reserve_tbl SET t_id = '$time' WHERE r_id = '$editr_id'";
 
    $run_query2d = mysqli_query($c1,$table2c);
 
 
     
-/*
- echo"<script>window.location.href='admin_reservation.php';</script>";	*/
+
+ echo"<script>window.location.href='admin_reservation.php';</script>";	
 }
 else
 {
 
 echo "This Date is already reserved!";
 
-/*
- echo"<script>window.location.href='admin_reservation.php';</script>";	*/
+
+ echo"<script>window.location.href='admin_reservation.php';</script>";	
 }
 
 
