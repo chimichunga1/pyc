@@ -24,7 +24,8 @@
         <li><a href="admin_announcements.php"><i class="fa fa-info-circle"></i> <span>Announcements</span></a></li>
         <li><a href="admin_news.php"><i class="fa fa-newspaper-o"></i> <span>News</span></a></li>
         <li><a href="admin_prayers.php"><i class="fa fa-smile-o"></i> <span>Prayers</span></a></li>
-        <li><a href="admin_prayers.php"><i class="fa fa-users"></i> <span>Accounts</span></a></li>
+         <li><a href="admin_sreflect.php"><i class="fa fa-adjust"></i> <span>Sunday Reflection</span></a></li>
+        <li><a href="admin_accounts.php"><i class="fa fa-users"></i> <span>Accounts</span></a></li>
 
  <!-- 
         <li class="header">LABELS</li>
