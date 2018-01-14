@@ -271,31 +271,87 @@ $search= mysqli_fetch_assoc($row);
 			</div>
 
 			
+<?php 
+
+date_default_timezone_set('Asia/Manila');
+
+$timerangestart=date("Y-m-d"); 
+$timerangeend=date('Y-m-d', strtotime($timerangestart. '+ 7 day'));
+
+
+
+
+$qnews=mysqli_query($c1,"SELECT * FROM news_tbl WHERE  `newsdate` BETWEEN '".$timerangestart."' AND '".$timerangeend."' ");
+
+while ($rownews=mysqli_fetch_array($qnews)) 
+{
+
+
+$str=$rownews[3] ;
+$modalnewsid=$rownews[0];
+
+
+		echo '<div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.9s">
+				<img src="'.$rownews[4].'" class="img-responsive" >
+				<center><h4>'.$rownews[1].'</h4>';
+
+
+
+
+$postnews=substr($str, 0, 100);
+
+ echo "<p>".$postnews.". . .</p>";
+ echo '<a data-toggle="modal" data-target="#'.$modalnewsid.'" class="btn btn-info">Read More . . .</a></center>
+ ';
+
+
+
+				
+
+
+echo '<br><br></div>';
+
+echo "<!-- Modal HTML -->
+    <div id='".$modalnewsid."' class='modal fade'>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                    <h4 class='modal-title'>News </h4>
+                </div>
+                <div class='modal-body'>
+                 
+
+
+<h1>".$rownews[1]."</h1>
+<p>".$rownews[3]."</p>
+
+
+                </div>
+                <div class='modal-footer'>
+                   
+                    <button type='button' class='btn btn-danger' data-dismiss='modal'>Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+";		
+			
+	
+
+
+}
+
+
+?>
+		 
+		
+
 
 		
-					
-			<div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.9s">
-				<img src="images/overview-img.jpg" class="img-responsive" alt="Overview">
-				<center><h4>Lorem</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua.</p>
-				<a class="btn btn-info">Read More . . .</a></center>
-			</div>
-			<div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.9s">
-				<img src="images/overview-img.jpg" class="img-responsive" alt="Overview">
-				<center><h4>Lorem</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua.</p>
-				<a class="btn btn-info">Read More . . .</a></center>
-			</div>
-			<div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.9s">
-				<img src="images/overview-img.jpg" class="img-responsive" alt="Overview">
-				<center><h4>Lorem</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua.</p>
-				<a class="btn btn-info">Read More . . .</a></center>
-			</div>
-			
+
+
 
 	</div>
 	</div>
@@ -351,146 +407,209 @@ $search= mysqli_fetch_assoc($row);
 				<!-- tab panes -->
 				<div class="tab-content">
 
+
+<?php 
+
+$day1=date("Y-m-d"); 
+$day2=date('Y-m-d', strtotime($day1. '+ 2 day'));
+$day3=date('Y-m-d', strtotime($day1. '+ 3 day'));
+$day4=date('Y-m-d', strtotime($day1. '+ 4 day'));
+$day5=date('Y-m-d', strtotime($day1. '+ 5 day'));
+$day6=date('Y-m-d', strtotime($day1. '+ 6 day'));
+
+
+?>
+
 					<div role="tabpanel" class="tab-pane active" id="1day">
-						<!-- program speaker here -->
-					
-						<div class="col-md-12 col-sm-12">
+				
+
+<?php 
+
+$qday1=mysqli_query($c1,"SELECT * FROM `announce_tbl` WHERE `an_date`='".$day1."' ");
+
+
+while ($rday1=mysqli_fetch_array($qday1))
+{
+
+echo '	<div class="col-md-12 col-sm-12">
 							<h6>
-								<span><i class="fa fa-clock-o"></i> 09.00 AM</span> 
-								<span><i class="fa fa-map-marker"></i> Room 240</span>
+								<span><i class="fa fa-clock-o"></i>'.$rday1[5].'</span> 
+								<span><i class="fa fa-map-marker"></i>'.$rday1[4].'</span>
 							</h6>
-							<h3>Introduction to Design</h3>
-							<h4>By Jenny Green</h4>
-							<p>Maecenas accumsan metus turpis, eu faucibus ligula interdum in. Mauris at tincidunt felis, vitae aliquam magna. Sed aliquam fringilla vestibulum.</p>
+							<h3>'.$rday1[1].'</h3>
+							<h4>By '.$rday1[2].'</h4>
+							<p>'.$rday1[3].'</p>
 						</div>
 
-						<!-- program divider -->
-						<div class="program-divider col-md-12 col-sm-12"></div>
-
-						<!-- program speaker here -->
 						
+						<div class="program-divider col-md-12 col-sm-12"></div>';
+
+}
+
+?>
+
+					
+
+						
+
+
+
 					</div>
 
 					<div role="tabpanel" class="tab-pane " id="2day">
-						<!-- program speaker here -->
+	
 					
-						<div class="col-md-12 col-sm-12">
+<?php 
+
+$qday2=mysqli_query($c1,"SELECT * FROM `announce_tbl` WHERE `an_date`='".$day2."' ");
+
+
+while ($rday2=mysqli_fetch_array($qday2))
+{
+
+echo '	<div class="col-md-12 col-sm-12">
 							<h6>
-								<span><i class="fa fa-clock-o"></i> 09.00 AM</span> 
-								<span><i class="fa fa-map-marker"></i> Room 240</span>
+								<span><i class="fa fa-clock-o"></i>'.$rday2[5].'</span> 
+								<span><i class="fa fa-map-marker"></i>'.$rday2[4].'</span>
 							</h6>
-							<h3>Introduction to Design</h3>
-							<h4>By Jenny Green</h4>
-							<p>Maecenas accumsan metus turpis, eu faucibus ligula interdum in. Mauris at tincidunt felis, vitae aliquam magna. Sed aliquam fringilla vestibulum.</p>
+							<h3>'.$rday2[1].'</h3>
+							<h4>By '.$rday2[2].'</h4>
+							<p>'.$rday2[3].'</p>
 						</div>
 
-						<!-- program divider -->
-						<div class="program-divider col-md-12 col-sm-12"></div>
-
-						<!-- program speaker here -->
 						
+						<div class="program-divider col-md-12 col-sm-12"></div>';
+
+}
+
+?>
+
 					</div>
 
 					<div role="tabpanel" class="tab-pane " id="3day">
-						<!-- program speaker here -->
-					
-						<div class="col-md-12 col-sm-12">
+						
+
+						<?php 
+
+$qday3=mysqli_query($c1,"SELECT * FROM `announce_tbl` WHERE `an_date`='".$day3."' ");
+
+
+while ($rday3=mysqli_fetch_array($qday3))
+{
+
+echo '	<div class="col-md-12 col-sm-12">
 							<h6>
-								<span><i class="fa fa-clock-o"></i> 09.00 AM</span> 
-								<span><i class="fa fa-map-marker"></i> Room 240</span>
+								<span><i class="fa fa-clock-o"></i>'.$rday3[5].'</span> 
+								<span><i class="fa fa-map-marker"></i>'.$rday3[4].'</span>
 							</h6>
-							<h3>Introduction to Design</h3>
-							<h4>By Jenny Green</h4>
-							<p>Maecenas accumsan metus turpis, eu faucibus ligula interdum in. Mauris at tincidunt felis, vitae aliquam magna. Sed aliquam fringilla vestibulum.</p>
+							<h3>'.$rday3[1].'</h3>
+							<h4>By '.$rday3[2].'</h4>
+							<p>'.$rday3[3].'</p>
 						</div>
 
-						<!-- program divider -->
-						<div class="program-divider col-md-12 col-sm-12"></div>
+						
+						<div class="program-divider col-md-12 col-sm-12"></div>';
 
-						<!-- program speaker here -->
+}
+
+?>
 						
 					</div>
 
 					<div role="tabpanel" class="tab-pane " id="4day">
-						<!-- program speaker here -->
-					
-						<div class="col-md-12 col-sm-12">
+						
+<?php 
+
+$qday4=mysqli_query($c1,"SELECT * FROM `announce_tbl` WHERE `an_date`='".$day4."' ");
+
+
+while ($rday4=mysqli_fetch_array($qday4))
+{
+
+echo '	<div class="col-md-12 col-sm-12">
 							<h6>
-								<span><i class="fa fa-clock-o"></i> 09.00 AM</span> 
-								<span><i class="fa fa-map-marker"></i> Room 240</span>
+								<span><i class="fa fa-clock-o"></i>'.$rday4[5].'</span> 
+								<span><i class="fa fa-map-marker"></i>'.$rday4[4].'</span>
 							</h6>
-							<h3>Introduction to Design</h3>
-							<h4>By Jenny Green</h4>
-							<p>Maecenas accumsan metus turpis, eu faucibus ligula interdum in. Mauris at tincidunt felis, vitae aliquam magna. Sed aliquam fringilla vestibulum.</p>
+							<h3>'.$rday4[1].'</h3>
+							<h4>By '.$rday4[2].'</h4>
+							<p>'.$rday4[3].'</p>
 						</div>
 
-						<!-- program divider -->
-						<div class="program-divider col-md-12 col-sm-12"></div>
-
-						<!-- program speaker here -->
 						
+						<div class="program-divider col-md-12 col-sm-12"></div>';
+
+}
+
+?>
+
 					</div>
 
 					<div role="tabpanel" class="tab-pane " id="5day">
-						<!-- program speaker here -->
-					
-						<div class="col-md-12 col-sm-12">
+						
+<?php 
+
+$qday5=mysqli_query($c1,"SELECT * FROM `announce_tbl` WHERE `an_date`='".$day5."' ");
+
+
+while ($rday5=mysqli_fetch_array($qday5))
+{
+
+echo '	<div class="col-md-12 col-sm-12">
 							<h6>
-								<span><i class="fa fa-clock-o"></i> 09.00 AM</span> 
-								<span><i class="fa fa-map-marker"></i> Room 240</span>
+								<span><i class="fa fa-clock-o"></i>'.$rday5[5].'</span> 
+								<span><i class="fa fa-map-marker"></i>'.$rday5[4].'</span>
 							</h6>
-							<h3>Introduction to Design</h3>
-							<h4>By Jenny Green</h4>
-							<p>Maecenas accumsan metus turpis, eu faucibus ligula interdum in. Mauris at tincidunt felis, vitae aliquam magna. Sed aliquam fringilla vestibulum.</p>
+							<h3>'.$rday5[1].'</h3>
+							<h4>By '.$rday5[2].'</h4>
+							<p>'.$rday5[3].'</p>
 						</div>
 
-						<!-- program divider -->
-						<div class="program-divider col-md-12 col-sm-12"></div>
-
-						<!-- program speaker here -->
 						
+						<div class="program-divider col-md-12 col-sm-12"></div>';
+
+}
+
+?>
+
 					</div>
 
 					<div role="tabpanel" class="tab-pane " id="6day">
-						<!-- program speaker here -->
-					
-						<div class="col-md-12 col-sm-12">
+						
+
+<?php 
+
+$qday6=mysqli_query($c1,"SELECT * FROM `announce_tbl` WHERE `an_date`='".$day6."' ");
+
+
+while ($rday6=mysqli_fetch_array($qday6))
+{
+
+echo '	<div class="col-md-12 col-sm-12">
 							<h6>
-								<span><i class="fa fa-clock-o"></i> 09.00 AM</span> 
-								<span><i class="fa fa-map-marker"></i> Room 240</span>
+								<span><i class="fa fa-clock-o"></i>'.$rday6[5].'</span> 
+								<span><i class="fa fa-map-marker"></i>'.$rday6[4].'</span>
 							</h6>
-							<h3>Introduction to Design</h3>
-							<h4>By Jenny Green</h4>
-							<p>Maecenas accumsan metus turpis, eu faucibus ligula interdum in. Mauris at tincidunt felis, vitae aliquam magna. Sed aliquam fringilla vestibulum.</p>
+							<h3>'.$rday6[1].'</h3>
+							<h4>By '.$rday6[2].'</h4>
+							<p>'.$rday6[3].'</p>
 						</div>
 
-						<!-- program divider -->
-						<div class="program-divider col-md-12 col-sm-12"></div>
+						
+						<div class="program-divider col-md-12 col-sm-12"></div>';
 
-						<!-- program speaker here -->
+}
+
+?>
+
 						
 					</div>
 
-					<div role="tabpanel" class="tab-pane " id="7day">
-						<!-- program speaker here -->
 					
-						<div class="col-md-12 col-sm-12">
-							<h6>
-								<span><i class="fa fa-clock-o"></i> 09.00 AM</span> 
-								<span><i class="fa fa-map-marker"></i> Room 240</span>
-							</h6>
-							<h3>Introduction to Design</h3>
-							<h4>By Jenny Green</h4>
-							<p>Maecenas accumsan metus turpis, eu faucibus ligula interdum in. Mauris at tincidunt felis, vitae aliquam magna. Sed aliquam fringilla vestibulum.</p>
-						</div>
 
-						<!-- program divider -->
-						<div class="program-divider col-md-12 col-sm-12"></div>
 
-						<!-- program speaker here -->
-						
-					</div>
 
+					
 
 				</div>
 
