@@ -1156,14 +1156,36 @@ else
                     <h4 class='modal-title'>RESERVE </h4>
                 </div>
                 <div class='modal-body'>
-<form method="post" action="reserve.php">
+<form method="post" action="reserve_new.php">
 
 	<center><h1>PARISH</h1></center>
 	<input type='text' class='form-control' name='v_id'   style='opacity:0;display:none;position:absolute;' value='1'>
 
 	<br>
-	<label>PURPOSE</label>
-	<input type='text' class='form-control' required name='r_name'  >
+    <label>PURPOSE</label>
+    <select name="r_purpose" id="dept-list" class="form-control selectpicker" onChange="getState(this.value);">
+
+
+
+       <?php
+
+  
+
+            $table2 = "SELECT * FROM event_tbl";
+            $run_query2b = mysqli_query($c1,$table2);
+
+            while($row = mysqli_fetch_array($run_query2b))
+
+        {  
+        ?>
+  
+        <?php
+
+        echo "<option value=$row[event_id] >$row[event_name] </option>";
+        }
+        ?>
+
+    </select>
 	<br>
 	<label>DATE</label>
 	<input type='date' class='form-control' required name='r_date' min="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 7 day'));?>">
@@ -1171,7 +1193,7 @@ else
 <br>
 	
 
-	<label class="containerbtn"> SLOT 1 | 08:00 AM - 11:00 AM
+<!-- 	<label class="containerbtn"> SLOT 1 | 08:00 AM - 11:00 AM
   <input type="radio" name="t_id"   checked value="1" required>
   <span class="checkmark"></span>
 </label>
@@ -1182,8 +1204,15 @@ else
 <label class="containerbtn">SLOT 3 | 04:00 PM - 07:00 PM
   <input type="radio" name="t_id" value="3" >
   <span class="checkmark"></span>
-</label>
+</label> -->
 
+                        <div id="state-list" >
+<BR>
+
+                                <!-- TABLE GOES IN -->
+                        
+
+                        </div>
 <br>
 <br>
 NOTE: Reservee are required to reserve at least 7 days !
@@ -1204,225 +1233,6 @@ NOTE: Reservee are required to reserve at least 7 days !
             </div>
         </div>
     </div>
-
-   <div id='modalreserve2' class='modal fade'>
-        <div class='modal-dialog'>
-            <div class='modal-content'>
-                <div class='modal-header'>
-                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-                    <h4 class='modal-title'>RESERVE </h4>
-                </div>
-                <div class='modal-body'>
-                 <form method="post" action="reserve.php">
-<center><h1>PARISH HALL</h1></center>
-	<input type='text' class='form-control' name='v_id'   style='opacity:0;display:none;position:absolute;' value='2>
-
-	<br>
-	<label>PURPOSE</label>
-	<input type='text' class='form-control' required name='r_name'  >
-	<br>
-	<label>DATE</label>
-	<input type='date' class='form-control' required name='r_date' min="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 7 day'));?>">
-<br>
-<br>
-	
-
-	<label class="containerbtn"> SLOT 1 | 08:00 AM - 11:00 AM
-  <input type="radio" name="t_id" checked value="1" required>
-  <span class="checkmark"></span>
-</label>
-<label class="containerbtn">SLOT 2 | 12:00 PM - 03:00 PM
-  <input type="radio" name="t_id" value="2" >
-  <span class="checkmark"></span>
-</label>
-<label class="containerbtn">SLOT 3 | 04:00 PM - 07:00 PM
-  <input type="radio" name="t_id" value="3" >
-  <span class="checkmark"></span>
-</label>
-
-<br>
-<br>
-NOTE: Reservee are required to reserve at least 7 days !
-
-	
-
-
-
-                </div>
-                <div class='modal-footer'>
-                   
-                                          <button type='submit' class='btn btn-success' >Submit</button>
-                    <button type='button' class='btn btn-danger' data-dismiss='modal'>Close</button>
-
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-   <div id='modalreserve3' class='modal fade'>
-        <div class='modal-dialog'>
-            <div class='modal-content'>
-                <div class='modal-header'>
-                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-                    <h4 class='modal-title'>RESERVE </h4>
-                </div>
-                <div class='modal-body'>
-                 <form method="post" action="reserve.php">
-<center><h1>KITCHEN</h1></center>
-	<input type='text' class='form-control' name='v_id'   style='opacity:0;display:none;position:absolute;' value='3'>
-
-	<br>
-	<label>PURPOSE</label>
-	<input type='text' class='form-control' required name='r_name'  >
-	<br>
-	<label>DATE</label>
-	<input type='date' class='form-control' required name='r_date' min="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 7 day'));?>">
-<br>
-<br>
-	
-
-	<label class="containerbtn"> SLOT 1 | 08:00 AM - 11:00 AM
-  <input type="radio" name="t_id"  checked value="1" required>
-  <span class="checkmark"></span>
-</label>
-<label class="containerbtn">SLOT 2 | 12:00 PM - 03:00 PM
-  <input type="radio" name="t_id" value="2" >
-  <span class="checkmark"></span>
-</label>
-<label class="containerbtn">SLOT 3 | 04:00 PM - 07:00 PM
-  <input type="radio" name="t_id" value="3" >
-  <span class="checkmark"></span>
-</label>
-
-<br>
-<br>
-NOTE: Reservee are required to reserve at least 7 days !
-
-	
-
-
-
-                </div>
-                <div class='modal-footer'>
-                   
-                                     <button type='submit' class='btn btn-success' >Submit</button>
-                    <button type='button' class='btn btn-danger' data-dismiss='modal'>Close</button>
-
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-   <div id='modalreserve4' class='modal fade'>
-        <div class='modal-dialog'>
-            <div class='modal-content'>
-                <div class='modal-header'>
-                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-                    <h4 class='modal-title'>RESERVE </h4>
-                </div>
-                <div class='modal-body'>
-                	<form method="post" action="reserve.php">
-<center><h1>YOUTH CENTER</h1></center>
-	<input type='text' class='form-control' name='v_id'   style='opacity:0;display:none;position:absolute;' value='4'>
-
-	<br>
-	<label>PURPOSE</label>
-	<input type='text' class='form-control' required name='r_name'  >
-	<br>
-	<label>DATE</label>
-	<input type='date' class='form-control' required name='r_date' min="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 7 day'));?>">
-<br>
-<br>
-	
-
-	<label class="containerbtn"> SLOT 1 | 08:00 AM - 11:00 AM
-  <input type="radio" name="t_id"  checked value="1" required>
-  <span class="checkmark"></span>
-</label>
-<label class="containerbtn">SLOT 2 | 12:00 PM - 03:00 PM
-  <input type="radio" name="t_id" value="2" >
-  <span class="checkmark"></span>
-</label>
-<label class="containerbtn">SLOT 3 | 04:00 PM - 07:00 PM
-  <input type="radio" name="t_id" value="3" >
-  <span class="checkmark"></span>
-</label>
-
-<br>
-<br>
-NOTE: Reservee are required to reserve at least 7 days !
-
-	
-
-
-
-                </div>
-                <div class='modal-footer'>
-                   
-                                   <button type='submit' class='btn btn-success' >Submit</button>
-                    <button type='button' class='btn btn-danger' data-dismiss='modal'>Close</button>
-
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-   <div id='modalreserve5' class='modal fade'>
-        <div class='modal-dialog'>
-            <div class='modal-content'>
-                <div class='modal-header'>
-                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-                    <h4 class='modal-title'>RESERVE </h4>
-                </div>
-                <div class='modal-body'>
-                 <form method="post" action="reserve.php">
-<center><h1>FORMATION HALL</h1></center>
-	<input type='text' class='form-control' name='v_id'   style='opacity:0;display:none;position:absolute;' value='5'>
-
-	<br>
-	<label>PURPOSE</label>
-	<input type='text' class='form-control' name='r_name'   required>
-	<br>
-	<label>DATE</label>
-	<input type='date' required class='form-control' name='r_date' min="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 7 day'));?>">
-<br>
-<br>
-	
-
-	<label class="containerbtn"> SLOT 1 | 08:00 AM - 11:00 AM
-  <input type="radio" name="t_id"  checked value="1" required>
-  <span class="checkmark"></span>
-</label>
-<label class="containerbtn">SLOT 2 | 12:00 PM - 03:00 PM
-  <input type="radio" name="t_id" value="2" >
-  <span class="checkmark"></span>
-</label>
-<label class="containerbtn">SLOT 3 | 04:00 PM - 07:00 PM
-  <input type="radio" name="t_id" value="3" >
-  <span class="checkmark"></span>
-</label>
-
-<br>
-<br>
-NOTE: Reservee are required to reserve at least 7 days !
-
-	
-
-
-                </div>
-                <div class='modal-footer'>
-              <button type='submit' class='btn btn-success' >Submit</button>
-                    <button type='button' class='btn btn-danger' data-dismiss='modal'>Close</button>
-
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
 
 
 </section>
@@ -1654,5 +1464,33 @@ $('a[href*="#"]')
     }
   });
 </script>
+
+
+
+
+<script>
+
+function getState(val) {
+
+
+
+   $.ajax({
+    type: "POST",
+    url: "get_state.php",
+    data:'positionname='+val,
+    success: function(data){
+        $("#state-list").html(data);
+    }
+   
+            
+    });
+}
+
+
+
+
+</script>
+
+
 </body>
 </html>
