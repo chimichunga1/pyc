@@ -73,7 +73,7 @@ img
 <br><br>
 <div class="wrapper" style="background-color: transparent;">
 
-<div class="wrapper" style="margin:10px; width:98%">
+<div class="wrapper" style="margin:10px; width:98%;">
 <button id="addbtn" type='button'  style="width:99%;" class="btn btn-success">Add Accounts +</button>
 
 
@@ -172,11 +172,14 @@ img
   
   $Mymodal="Mymodal".$row['u_id'];
 $Yourmodal="Yourmodal".$row['u_id'];
+
+
+ //<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#'.$Mymodal.'" ><i class="glyphicon glyphicon-edit"></i></button>
     echo '<center>
 
 
 
-     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#'.$Mymodal.'" ><i class="glyphicon glyphicon-edit"></i></button>
+    
      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#'.$Yourmodal.'"><i class="glyphicon glyphicon-remove"></i></button></center>';
 
 

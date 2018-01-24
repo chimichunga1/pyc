@@ -33,7 +33,7 @@ include ("connect.php"); ?>
 <meta name="theme-color" content="#ffffff">
 
 <!-- Main css -->
-<link rel="stylesheet" href="css/style1.css">
+<link rel="stylesheet" href="css/style2.css">
 <link rel="stylesheet" href="css/w3w.css">
 
 <script src="sm/sm2/dist/sweetalert2.min.js"></script>
@@ -125,6 +125,66 @@ position: relative;
 	border-radius: 50%;
 	background: white;
 }
+.news
+{
+	    background: url('images/news.jpg') 50% 0 repeat-y fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+  	padding-top: 7rem;
+    padding-bottom: 7rem;
+}
+.announcement
+{
+	    background: url('images/announcement.jpg') 50% 0 repeat-y fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+  	padding-top: 15rem;
+    padding-bottom: 15rem;
+}
+.prayers
+{
+	    background: url('images/prayers.jpg') 50% 0 repeat-y fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+  	padding-top: 7rem;
+    padding-bottom: 7rem;
+}
+.reservation
+{
+	    background: url('images/reservation.jpg') 50% 0 repeat-y fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+  	padding-top: 7rem;
+    padding-bottom: 7rem;
+}
+.register {
+    background: url('images/register-bg.jpg') 50% 0 repeat-y fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+  	padding-top: 7rem;
+    padding-bottom: 7rem;
+}
+.venue {
+    background: url('images/venue-bg.jpg') 50% 0 repeat-y fixed;
+      -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+}
+.contact {
+    background: url('images/contact-bg.jpg') 50% 0 repeat-y fixed;
+      -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    	padding-top: 7rem;
+    padding-bottom: 7rem;
+}
 
 
 </style>
@@ -182,14 +242,14 @@ if(isset($_POST['submit']))
 $row=mysqli_query($c1,'SELECT * From `account_tbl` WHERE `username`="'.$_POST["username"].'" AND `password`="'.$_POST["password"].'" ');
 
 $search= mysqli_fetch_assoc($row);
-
+  $_SESSION['fn']=$search['fullname'];
+  $_SESSION["u_id"] = $search["u_id"];
 
   if (!empty($search) && ($search['access']==1))
   {
 
 
-  $_SESSION['fn']=$search['fullname'];
-  $_SESSION["u_id"] = $search["u_id"];
+
 
 ?>
 
@@ -228,8 +288,6 @@ swal({
   {
 
 
-  $_SESSION['id']=$search['u_id'];
-  $_SESSION['fn']=$search['fullname'];
 
 ?>
 
@@ -502,7 +560,7 @@ else
 <!-- =========================
     z2 SECTION   
 ============================== -->
-<?php echo '<section id="'.$navigation[1].'" class="parallax-section sectionA2">';?>
+<?php echo '<section id="'.$navigation[1].'" class="parallax-section sectionA2 news" >';?>
 	<div class="container">
 		<div class="row">
 
@@ -619,8 +677,8 @@ echo "<!-- Modal HTML -->
 <!-- =========================
     PROGRAM SECTION   
 ============================== -->
-<?php echo '<section id="'.$navigation[2].'" class="parallax-section section5" >';?>
-	<div class="container">
+<section id="<?php echo $navigation[2];?>" class="parallax-section section5 announcement"  >
+	<div class="container" >
 		<div class="row">
 
 			<div class="wow fadeInUp col-md-12 col-sm-12" data-wow-delay="0.6s">
@@ -870,7 +928,7 @@ echo '	<div class="col-md-12 col-sm-12">
 <!-- =========================
     5 SECTION   
 ============================== -->
-<?php echo '<section id="'.$navigation[3].'" class="parallax-section section5" >';?>
+<?php echo '<section id="'.$navigation[3].'" class="parallax-section section5 prayers" >';?>
 	<div class="container">
 		<div class="row">
 
@@ -968,7 +1026,7 @@ echo "
 if(empty($_SESSION['fn']))
 {
 	?>
-<section id="register" class="parallax-section">
+<section id="register" class="parallax-section register">
 	<div class="container">
 		<div class="row">
 
@@ -1009,7 +1067,7 @@ if (isset($_POST["submitreg"]))
 	$a15=$_POST['phone'];
 	$a16=$_POST['email'];
 
-	mysqli_query($c1,"INSERT INTO account_tbl (`username`,`password`,`fullname`,`email`,`phone`,`access`) VALUES ('".$a11."','".$a12."','".$a34."','".$a16."','".$a15."','2') ");
+	mysqli_query($c1,"INSERT INTO account_tbl (`username`,`password`,`fullname`,`email`,`phone`,`access`,`isDeleted`) VALUES ('".$a11."','".$a12."','".$a34."','".$a16."','".$a15."','2','0') ");
 
 
 }
@@ -1036,7 +1094,7 @@ else
 <!-- =========================
    A2 SECTION   
 ============================== -->
-<?php echo '<section id="'.$navigation[4].'" class="parallax-section sectionA2">';?>
+<?php echo '<section id="'.$navigation[4].'" class="parallax-section sectionA2 reservation">';?>
 	<div class="container">
 		<div class="row">
 
@@ -1508,7 +1566,7 @@ NOTE: Reservee are required to reserve at least 7 days !
 <!-- =========================
     VENUE SECTION   
 ============================== -->
-<section id="venue" class="parallax-section">
+<section id="venue" class="parallax-section venue">
 	<div class="container">
 		<div class="row">
 
@@ -1530,7 +1588,7 @@ NOTE: Reservee are required to reserve at least 7 days !
 <!-- =========================
     CONTACT SECTION   
 ============================== -->
-<section id="contact" class="parallax-section">
+<section id="contact" class="parallax-section contact">
 	<div class="container">
 		<div class="row">
 

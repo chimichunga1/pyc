@@ -1,3 +1,12 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OLHRP | RESERVE</title>
+	<script src="sm/sm2/dist/sweetalert2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="sm/sm2/dist/sweetalert2.css">
+</head>
+<body>
 <?php
 include ('connect.php');
 
@@ -14,20 +23,66 @@ $search= mysqli_fetch_assoc($row);
        
 
   if (empty($search))
-
+{
 
 mysqli_query($c1,"INSERT INTO reserve_tbl (`u_id`,`v_id`,`r_name`,`r_date`,`t_id`) VALUES ('".$u_id."','".$v_id."','".$r_name."','".$r_date."','".$t_id."' )");
 
     
+?>
 
- echo"<script>window.location.href='index.php';</script>";	
 
+
+ <script>
+
+swal({
+
+	title: 'RESERVED',
+	type:'success',
+    text: 'Date Reserved!'
+
+}).then(result => {
+  if (result.value) {
+ 
+window.location.href='index.php';
+
+  } else {
+
+  }
+})
+
+
+ </script>
+ <?php
+}
 else
 {
+?>
 
-echo "This Date is already reserved!";
 
 
- echo"<script>window.location.href='index.php';</script>";	
+ <script>
+
+swal({
+
+	title: 'RESERVED',
+		type:'error',
+    text: 'This date is already reserved!'
+
+}).then(result => {
+  if (result.value) {
+ 
+window.location.href='index.php';
+
+  } else {
+
+  }
+})
+
+
+ </script>	
+ <?php
 }
  ?>
+
+</body>
+</html>

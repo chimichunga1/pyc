@@ -86,7 +86,7 @@ if (!empty($tmp_name1))
 
 
 
-				$_FILES['editsrimg']['name'] = "P ".$editsr.$row['sr_ID'].$filetype1;
+				$_FILES['editsrimg']['name'] = "Pref ".$editsr.$row['s_id'].$filetype1;
 				        $filename1 = $_FILES['editsrimg']['name'];
 
 				        $tmp_name1 = $_FILES['editsrimg']['tmp_name'];
