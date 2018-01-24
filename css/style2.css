@@ -1,10 +1,12 @@
-/*
 
-New Event
 
-http://www.templatemo.com/tm-486-new-event
 
-*/
+
+
+
+
+
+
 
 body {
 		background: #ffffff;
@@ -358,14 +360,7 @@ footer {
 }
 
 
-.section5 
-{
-      background: url('../images/register-bg.jpg') 50% 0 repeat-y fixed;
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-position: center center;
-    color: #ffffff;
-}
+
 /*---------------------------------------
    Program section              
 -----------------------------------------*/
@@ -428,13 +423,7 @@ footer {
 /*---------------------------------------
     Regsiter section              
 -----------------------------------------*/
-#register {
-    background: url('../images/register-bg.jpg') 50% 0 repeat-y fixed;
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-position: center center;
-    color: #ffffff;
-}
+
 
 #register .form-control {
   background: transparent;
@@ -534,13 +523,7 @@ footer {
 /*---------------------------------------
    Venue section              
 -----------------------------------------*/
-#venue {
-    background: url('../images/venue-bg.jpg') 50% 0 repeat-y fixed;
-    background-size: cover;
-    background-position: center center;
-    padding-top: 7rem;
-    padding-bottom: 7rem;
-}
+
 
 #venue p {
   padding-top: 12px;

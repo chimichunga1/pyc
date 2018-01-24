@@ -23,7 +23,7 @@ $srdate=$_POST["srdate"];
             $run_query2b = mysqli_query($c1,$table2);         
 
  		$row = mysqli_fetch_row($run_query2b);
-   $IMGID = "P ".$sr.$row[0];
+   $IMGID = "Pref ".$sr.$row[0];
 
 
 if ($_FILES['srimg']['size'] == 0)

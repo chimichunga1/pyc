@@ -9,6 +9,77 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <?php include("admin-head-links.php"); ?>
 
+
+<link rel="stylesheet" href="DT/dt.css">
+<style type="text/css">
+  
+
+/* The container */
+.containerbtn {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.containerbtn input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.containerbtn:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.containerbtn input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.containerbtn input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.containerbtn .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+  
+</style>
 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
@@ -23,7 +94,11 @@
         <link href="layout/styles/simple-sidebar.css" rel="stylesheet">
 
 <script type="text/javascript">
+
+
 $(document).ready(function(){
+ 
+
     $(".show-text").click(function(){
       $('#myModal').find(".lots-of-text").toggle();
         $('#myModal').modal('handleUpdate');
@@ -80,28 +155,24 @@ img
 
 
 
+
 <div class="col-md-12">
 
-  <!--Table-->
-<table class="table">
+<table id="reserve" class="display" cellspacing="0" width="100%">
+        <thead >
+            <tr>
+              <th>ID</th>
+              <th>Reservee</th>
+              <th>Name</th>
+              <th>Venue</th>
+              <th>Reservation Date</th>
+              <th>Time</th>
+              <th>Remarks</th>
+            </tr>
+        </thead>
 
-    <!--Table head-->
-    <thead class="blue-grey lighten-4">
-        <tr>
-            <th>Reservation ID</th>
-            <th>Reservee</th>
-            <th>Venue</th>
-            <th>Reservation Date</th>
-            <th>Time</th>
-            <th>Remarks</th>
-  
-        </tr>
-    </thead>
-    <!--Table head-->
-
-    <!--Table body-->
-    <tbody>
-    <?php 
+        <tbody>
+                   <?php 
    
     $fetch=mysqli_query($c1,'SELECT * From reserve_tbl'); 
     while($row=mysqli_fetch_assoc($fetch))
@@ -109,15 +180,27 @@ img
 
   ?>
         <tr>
-            <th scope="row" style="vertical-align: middle;"><?php echo $row['r_id']; ?></th>
-            <th style="color: black;background-color: white;vertical-align: middle;"><?php echo $row['r_name']; ?></th>
-            <th style="color: black;background-color: white;vertical-align: middle;"><?php echo $row['v_id']; ?></th>
-            <th style="color: black;background-color: white;vertical-align: middle;"><?php echo $row['r_date']; ?></th>
-            <th style="color: black;background-color: white;vertical-align: middle;"><?php echo $row['t_id']; ?></th>
+            <td scope="row" style="vertical-align: middle;"><?php echo $row['r_id']; ?></td>
+            <?php   $fetchuid=mysqli_fetch_array(mysqli_query($c1,'SELECT * From account_tbl where `u_id`="'.$row['u_id'].'" ')); ?>
+
+
+            <td style="color: black;background-color: white;vertical-align: middle;"><?php echo $fetchuid[3]; ?></td>
+
+
+
+            <td style="color: black;background-color: white;vertical-align: middle;"><?php echo $row['r_name']; ?></td>
+            <?php   $fetchvid=mysqli_fetch_array(mysqli_query($c1,'SELECT * From venue_tbl where `v_id`="'.$row['v_id'].'" ')); ?>
+
+
+            <td style="color: black;background-color: white;vertical-align: middle;"><?php echo $fetchvid[1]; ?></td>
+            <td style="color: black;background-color: white;vertical-align: middle;"><?php echo $row['r_date']; ?></td>
+
+            <?php   $fetchtid=mysqli_fetch_array(mysqli_query($c1,'SELECT * From time_tbl where `t_id`="'.$row['t_id'].'" ')); ?>
+            <td style="color: black;background-color: white;vertical-align: middle;"><?php echo $fetchtid[1]." - ".$fetchtid[2] ?></td>
 
 
             <?php    
-      echo "<th style='color: black;background-color: white;vertical-align: middle;' >";
+      echo "<td style='color: black;background-color: white;vertical-align: middle;' >";
   
   $Mymodal="Mymodal".$row['u_id'];
 $Yourmodal="Yourmodal".$row['u_id'];
@@ -240,9 +323,16 @@ echo "
        }
 
     ?>
-    </tbody>
-    <!--Table body-->
-</table>
+      
+        </tbody>
+    </table>
+
+
+
+
+
+  <!--Table-->
+
 <!--Table-->
 </div>
 </div>
@@ -264,8 +354,16 @@ echo "
 <!-- ./wrapper -->
 
 <?php include("admin-scripts.php"); ?>
+<script src="DT/dt.js"></script>
+<script src="DT/dt1.js"></script>
+<script src="DT/dt2.js"></script>
+
 <script>
 $(document).ready(function(){
+    $('#reserve').DataTable({
+    
+
+   });
 
     $("#addbtn").click(function(){
         $("#panel").slideToggle("slow");

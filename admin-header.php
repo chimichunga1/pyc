@@ -2,11 +2,11 @@
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index_admin.php" class="logo">
+    <a href="index_admin.php" class="logo" style="height:54px; " >
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini" style="font-size: 18px;font-family: Agency FB;">OLHRP</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg" style="font-size: 18px;font-family: Agency FB;">Our Lady of the Holy Rosary Parish</span>
+      <span class="logo-lg" style="font-size: 18px; font-family: Agency FB;">Our Lady of the Holy Rosary Parish</span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -24,7 +24,7 @@
     <!--  Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
            
-            <a href="logout.php" type="submit" class="btn btn-flat">Sign out</a>
+            <a href="logout.php" type="submit"  >Sign out</a>
             
           </li>
           <!-- Control Sidebar Toggle Button -->
